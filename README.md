@@ -14,10 +14,10 @@ adalah aplikasi flutter sederhana yang menampilkan list film dan acara tv disert
 - [x] Http package for consume API 
 
 
-## 📷 Screen Shots Applica
+## 📷 Screen Shots Application
 
 Home Movie | Detail Movie | Watchlist Movie | List Movie
 :----------:|:-------------:|:--------:|:--------:
-<img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/home.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/detail.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/watcthlist.jpeg" width=300/>  | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/list.jpeg" width=300/>
+<img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/home.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/detail.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/watchlist.jpeg" width=300/>  | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/list.jpeg" width=300/>
 
 #### Aplikasi ini masih dalam tahap pengembangan.
