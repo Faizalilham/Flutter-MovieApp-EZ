@@ -16,8 +16,8 @@ adalah aplikasi flutter sederhana yang menampilkan list film dan acara tv disert
 
 ## 📷 Screen Shots Applica
 
-Login Screen | SignUp Screen | Home Screen | Detail Screen
+Home Movie | Detail Movie | Watchlist Movie | List Movie
 :----------:|:-------------:|:--------:|:--------:
-<img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/movie_app_img/home.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/movie_app_img/detail.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/movie_app_img/watcthlist.jpeg" width=300/>  | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/movie_app_img/list.jpeg" width=300/>
+<img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/home.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/detail.jpeg" width=300/> | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/watcthlist.jpeg" width=300/>  | <img src="https://github.com/Faizalilham/Flutter-MovieApp-EZ/blob/main/movie_app_img/list.jpeg" width=300/>
 
-### Aplikasi ini masih dalam tahap pengembangan.
+#### Aplikasi ini masih dalam tahap pengembangan.
