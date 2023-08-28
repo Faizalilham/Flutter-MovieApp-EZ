@@ -13,6 +13,10 @@ class ServerFailure extends Failure {
   const ServerFailure(String message) : super(message);
 }
 
+class SharedPreferencesFailure extends Failure {
+  const SharedPreferencesFailure(String message) : super(message);
+}
+
 class ConnectionFailure extends Failure {
   const ConnectionFailure(String message) : super(message);
 }

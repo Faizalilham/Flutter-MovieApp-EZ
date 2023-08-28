@@ -140,4 +140,40 @@ class MovieRepositoryImpl implements MovieRepository {
       return Left(ConnectionFailure('Failed to connect to the network'));
     }
   }
+
+  @override
+  Future<Either<Failure, List<String>>> getHistorySearch() async{
+    try {
+      final result = await localDataSource.getHistorySearch();
+      return Right(result);
+    } on SharedPreferencesFailure catch (e) {
+      return Left(SharedPreferencesFailure(e.message));
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> removeHistorySearch()async {
+    try {
+      final result = await localDataSource.removeHistorySearch();
+      return Right(result);
+    } on SharedPreferencesFailure catch (e) {
+      return Left(SharedPreferencesFailure(e.message));
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> saveHistorySearch(List<String> data) async {
+    try {
+      final result = await localDataSource.saveHistorySearch(data);
+      return Right(result);
+    } on SharedPreferencesFailure catch (e) {
+      return Left(SharedPreferencesFailure(e.message));
+    } catch (e) {
+      throw e;
+    }
+  }
 }

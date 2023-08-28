@@ -153,7 +153,7 @@ void init() {
   locator.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(client: locator()));
   locator.registerLazySingleton<LocalDataSourceMovie>(
-      () => LocalDataSourceMovieImpl(movieDbHelper: locator()));
+      () => LocalDataSourceMovieImpl(movieDbHelper: locator(),sharedPreferencesHelper: locator()));
   locator.registerLazySingleton<LocalDataSourceTv>(
       () => LocalDataSourceTvImpl(tvDatabaseHelper: locator()));
 

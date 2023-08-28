@@ -1,15 +1,18 @@
 import 'package:movie_app/common/exception.dart';
 import 'package:movie_app/data/datasource/helper/movie_database_helper.dart';
+import 'package:movie_app/data/datasource/helper/shared_preference_helper.dart';
 import 'package:movie_app/data/datasource/local/movie/local_data_source_movie.dart';
 import 'package:movie_app/data/models/movie/movie_table.dart';
 
-class LocalDataSourceMovieImpl implements LocalDataSourceMovie{
-
+class LocalDataSourceMovieImpl implements LocalDataSourceMovie {
   final MovieDatabaseHelper movieDbHelper;
 
-  LocalDataSourceMovieImpl({required this.movieDbHelper});
+  final SharedPreferencesHelper sharedPreferencesHelper;
 
- @override
+  LocalDataSourceMovieImpl(
+      {required this.movieDbHelper, required this.sharedPreferencesHelper});
+
+  @override
   Future<String> insertWatchlist(MovieTable movie) async {
     try {
       await movieDbHelper.insertWatchlist(movie);
@@ -47,7 +50,6 @@ class LocalDataSourceMovieImpl implements LocalDataSourceMovie{
 
   @override
   Future<List<MovieTable>> getCacheNowPlaying() async {
-    // TODO: implement getCacheNowPlaying
     final result = await movieDbHelper.getCacheMovies('now playing');
     if (result.length > 0) {
       return result.map((data) => MovieTable.fromMap(data)).toList();
@@ -58,9 +60,32 @@ class LocalDataSourceMovieImpl implements LocalDataSourceMovie{
 
   @override
   Future<void> cacheNowPlayingMovies(List<MovieTable> movies) async {
-    // TODO: implement cacheNowPlayingMovies
     await movieDbHelper.clearCache('now playing');
     await movieDbHelper.insertCacheTransaction(movies, 'now playing');
   }
-  
+
+  @override
+  Future<List<String>> getHistorySearch() async {
+    return  await sharedPreferencesHelper.getHistorySearch();
+  }
+
+  @override
+  Future<String> removeHistorySearch() async{
+     try {
+      await sharedPreferencesHelper.removeHistorySearch();
+      return 'Removed';
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<String> saveHistorySearch(List<String> data)async {
+    try {
+      await sharedPreferencesHelper.saveHistorySearch(data);
+      return 'Saved';
+    } catch (e) {
+      throw Exception();
+    }
+  }
 }

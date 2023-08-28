@@ -8,11 +8,9 @@ class MovieSearchNotifier extends ChangeNotifier {
   final SearchMovieUsecase searchMovies;
   MovieSearchNotifier({required this.searchMovies});
 
-  ///state empty
   RequestState _state = RequestState.Empty;
   RequestState get state => _state;
 
-  ///state get list result
   List<Movie> _searchResult = [];
   List<Movie> get searchResult => _searchResult;
 
@@ -34,4 +32,7 @@ class MovieSearchNotifier extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+
+  
 }

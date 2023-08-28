@@ -9,4 +9,9 @@ abstract class LocalDataSourceMovie{
   Future<void> cacheNowPlayingMovies(List<MovieTable> movies);
   Future<List<MovieTable>> getCacheNowPlaying();
 
+  Future<String> saveHistorySearch(List<String> data);
+  Future<List<String>> getHistorySearch();
+  Future<String> removeHistorySearch();
+  
+
 }

@@ -13,6 +13,10 @@ import 'package:movie_app/data/datasource/helper/movie_database_helper.dart'
     as _i23;
 import 'package:movie_app/data/datasource/helper/tv_database_helper.dart'
     as _i21;
+
+import 'package:movie_app/data/datasource/helper/shared_preference_helper.dart'
+    as _i69;
+
 import 'package:movie_app/data/datasource/local/movie/local_data_source_movie.dart'
     as _i19;
 import 'package:movie_app/data/datasource/local/tv/local_data_source_tv.dart'
@@ -363,6 +367,36 @@ class MockMovieLocalDataSource extends _i1.Mock
           Invocation.method(#getCacheNowPlaying, []),
           returnValue: Future<List<_i20.MovieTable>>.value(<_i20.MovieTable>[]))
       as _i7.Future<List<_i20.MovieTable>>);
+}
+
+
+class MockSharedPreferences extends _i1.Mock implements _i69.SharedPreferencesHelper {
+  MockSharedPreferences() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i7.Future<void> saveHistorySearch(List<String> data) async {
+    return (super.noSuchMethod(
+        Invocation.method(#saveHistorySearch, [data]),
+        returnValue: Future<void>.value(),
+        returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+  }
+
+   @override
+  _i7.Future<void> getHistorySearch() async {
+    return (super.noSuchMethod(
+        Invocation.method(#getHistorySearch, []),
+        returnValue: Future<void>.value(),
+        returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+  }
+
+   @override
+  _i7.Future<String> removeHistorySearch() async {
+    return (super.noSuchMethod(
+        Invocation.method(#removeHistorySearch, []),
+        returnValue: Future<String>.value("")) as _i7.Future<String> );
+  }
 }
 
 /// A class which mocks [DatabaseHelperTv].
