@@ -376,19 +376,19 @@ class MockSharedPreferences extends _i1.Mock implements _i69.SharedPreferencesHe
   }
 
   @override
-  _i7.Future<void> saveHistorySearch(List<String> data) async {
+  _i7.Future<String> saveHistorySearch(List<String> data) async {
     return (super.noSuchMethod(
         Invocation.method(#saveHistorySearch, [data]),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+        returnValue: Future<String>.value(),
+        ));
   }
 
    @override
-  _i7.Future<void> getHistorySearch() async {
+  _i7.Future<List<String>> getHistorySearch() async {
     return (super.noSuchMethod(
         Invocation.method(#getHistorySearch, []),
-        returnValue: Future<void>.value(),
-        returnValueForMissingStub: Future<void>.value()) as _i7.Future<void>);
+        returnValue: Future<List<String>>.value([]),
+        ));
   }
 
    @override

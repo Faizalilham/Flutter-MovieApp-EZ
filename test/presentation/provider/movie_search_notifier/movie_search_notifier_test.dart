@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -9,26 +5,29 @@ import 'package:mockito/mockito.dart';
 import 'package:movie_app/common/failure.dart';
 import 'package:movie_app/common/state.dart';
 import 'package:movie_app/domain/entitites/movie/movie.dart';
+import 'package:movie_app/domain/usecase/movie/history_search_usecase.dart';
 import 'package:movie_app/domain/usecase/movie/search_movie_usecase.dart';
 import 'package:movie_app/presentation/provider/movie/search_movie_notifier.dart';
 
 import 'movie_search_notifier_test.mocks.dart';
 
-@GenerateMocks([
-  SearchMovieUsecase
-])
-
-void main(){
+@GenerateMocks([SearchMovieUsecase, HistorySearchUsecase])
+void main() {
   late MovieSearchNotifier provider;
   late MockSearchMovies mockSearchMovies;
+  late MockHistorySearchMovies historySearchUsecase;
   late int listenerCallCount;
 
-  setUp((){
+  setUp(() {
     listenerCallCount = 0;
     mockSearchMovies = MockSearchMovies();
-    provider = MovieSearchNotifier(searchMovies: mockSearchMovies)..addListener(() {
-      listenerCallCount += 1;
-    });
+    historySearchUsecase = MockHistorySearchMovies();
+    provider = MovieSearchNotifier(
+        searchMovies: mockSearchMovies,
+        historySearchUsecase: historySearchUsecase)
+      ..addListener(() {
+        listenerCallCount += 1;
+      });
   });
 
   final tMovieModel = Movie(
@@ -38,7 +37,7 @@ void main(){
     id: 557,
     originalTitle: 'Spider-Man',
     overview:
-    'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
     popularity: 60.441,
     posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
     releaseDate: '2002-05-01',
@@ -53,29 +52,39 @@ void main(){
   group('search movies', () {
     test('should change state to loading when usecase is called', () async {
       ///arrange
-      when(mockSearchMovies.execute(tQuery)).thenAnswer((_) async => Right(tMovieList));
+      when(mockSearchMovies.execute(tQuery))
+          .thenAnswer((_) async => Right(tMovieList));
+
       ///act
       provider.fetchMovieSearch(tQuery);
+
       ///assert
       expect(provider.state, RequestState.Loading);
     });
 
-    test('should change search result data when data is gotten successfully', () async {
-          ///arrange
-          when(mockSearchMovies.execute(tQuery)).thenAnswer((_) async => Right(tMovieList));
-          ///act
-          await provider.fetchMovieSearch(tQuery);
-          ///assert
-          expect(provider.state, RequestState.Success);
-          expect(provider.searchResult, tMovieList);
-          expect(listenerCallCount, 2);
-        });
+    test('should change search result data when data is gotten successfully',
+        () async {
+      ///arrange
+      when(mockSearchMovies.execute(tQuery))
+          .thenAnswer((_) async => Right(tMovieList));
+
+      ///act
+      await provider.fetchMovieSearch(tQuery);
+
+      ///assert
+      expect(provider.state, RequestState.Success);
+      expect(provider.searchResult, tMovieList);
+      expect(listenerCallCount, 2);
+    });
 
     test('should return error when data is unsuccessful', () async {
       ///arrange
-      when(mockSearchMovies.execute(tQuery)).thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+      when(mockSearchMovies.execute(tQuery))
+          .thenAnswer((_) async => Left(ServerFailure('Server Failure')));
+
       ///act
       await provider.fetchMovieSearch(tQuery);
+
       ///assert
       expect(provider.state, RequestState.Error);
       expect(provider.message, 'Server Failure');

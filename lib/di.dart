@@ -85,7 +85,7 @@ void init() {
       ));
 
   ///
-  locator.registerFactory(() => MovieSearchNotifier(searchMovies: locator()));
+  locator.registerFactory(() => MovieSearchNotifier(searchMovies: locator(),historySearchUsecase: locator()));
   locator.registerFactory(() => TvSearchNotifier( searchTvUsecase: locator()));
 
   //

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/common/constant.dart';
 import 'package:movie_app/common/state.dart';
@@ -18,17 +17,22 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Search Movie'),),
+      appBar: AppBar(
+        title: const Text('Search Movie'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
               onChanged: (query) {
                 Provider.of<MovieSearchNotifier>(context, listen: false)
                     .fetchMovieSearch(query);
+              },
+              onTap: () async {
+                Provider.of<MovieSearchNotifier>(context, listen: false)
+                    .showHistory();
               },
               autofocus: true,
               textInputAction: TextInputAction.search,
@@ -48,29 +52,45 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
-            
-            const SizedBox(height: 16,),
-            Text('Search Result', style: Heading6,),
-            Consumer<MovieSearchNotifier>(
-                builder: (context, data, child){
-                  if(data.state == RequestState.Loading){
-                    return const Center(child: CircularProgressIndicator(),);
-                  }else if(data.state == RequestState.Success){
-                    final result = data.searchResult;
-                    return Expanded(
-                      child: ListView.builder(
-                        itemCount: result.length,
-                        itemBuilder: (context, index){
-                          final movie = data.searchResult[index];
-                          return CardList(movie);
-                        },
-                      ),
-                    );
-                  }else{
-                    return Expanded(child: Container());
-                  }
-                }
-            )
+            const SizedBox(
+              height: 16,
+            ),
+            Consumer<MovieSearchNotifier>(builder: (context, data, child) {
+              final result = data.searchResult;
+              final tapResult = data.isHistory;
+
+              Text(
+                tapResult ? 'Search Result' : 'History Result',
+                style: Heading6,
+              );
+              if (data.state == RequestState.Loading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (data.state == RequestState.Success) {
+                return tapResult
+                    ? Expanded(
+                        child: ListView.builder(
+                          itemCount: result.length,
+                          itemBuilder: (context, index) {
+                            final movie = data.searchResult[index];
+                            return CardList(movie);
+                          },
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
+                          itemCount: result.length,
+                          itemBuilder: (context, index) {
+                            final movie = data.searchResult[index];
+                            return CardList(movie);
+                          },
+                        ),
+                      );
+              } else {
+                return Expanded(child: Container());
+              }
+            })
           ],
         ),
       ),

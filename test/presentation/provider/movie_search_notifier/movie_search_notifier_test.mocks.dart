@@ -11,6 +11,9 @@ import 'package:movie_app/domain/repository/movie_repository.dart'
     as _i2;
 import 'package:movie_app/domain/usecase/movie/search_movie_usecase.dart'
     as _i4;
+
+import 'package:movie_app/domain/usecase/movie/history_search_usecase.dart'
+    as _i5;
 import 'package:dartz/dartz.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -46,4 +49,36 @@ class MockSearchMovies extends _i1.Mock implements _i4.SearchMovieUsecase {
           returnValue: Future<_i3.Either<_i6.Failure, List<_i7.Movie>>>.value(
               _FakeEither_1<_i6.Failure, List<_i7.Movie>>())) as _i5
           .Future<_i3.Either<_i6.Failure, List<_i7.Movie>>>);
+}
+
+class MockHistorySearchMovies extends _i1.Mock implements _i5.HistorySearchUsecase {
+  MockHistorySearchMovies() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.MovieRepository get repository =>
+      (super.noSuchMethod(Invocation.getter(#repository),
+          returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, List<String>>> executeGet() =>
+      (super.noSuchMethod(Invocation.method(#executeGet, []),
+          returnValue: Future<_i3.Either<_i6.Failure, List<String>>>.value(
+              _FakeEither_1<_i6.Failure, List<String>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<String>>>);
+
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, String>> executeSave(List<String> data) =>
+      (super.noSuchMethod(Invocation.method(#executeGet, [data]),
+              returnValue: Future<_i3.Either<_i6.Failure, String>>.value(
+                  _FakeEither_1<_i6.Failure, String>()))
+          as _i5.Future<_i3.Either<_i6.Failure, String>>);
+
+  @override
+  _i5.Future<_i3.Either<_i6.Failure, String>> executeRemove() =>
+      (super.noSuchMethod(Invocation.method(#executeGet, []),
+              returnValue: Future<_i3.Either<_i6.Failure, String>>.value(
+                  _FakeEither_1<_i6.Failure, String>()))
+          as _i5.Future<_i3.Either<_i6.Failure, String>>);        
+
 }

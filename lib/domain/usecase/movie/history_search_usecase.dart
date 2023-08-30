@@ -2,9 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:movie_app/common/failure.dart';
 import 'package:movie_app/domain/repository/movie_repository.dart';
 
-class SharedPreferenceUseCase {
+class HistorySearchUsecase {
   MovieRepository movieRepository;
-  SharedPreferenceUseCase(this.movieRepository);
+  HistorySearchUsecase(this.movieRepository);
 
   Future<Either<Failure, String>> executeSave(List<String> data) =>
       movieRepository.saveHistorySearch(data);
