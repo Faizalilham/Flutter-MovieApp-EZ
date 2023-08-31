@@ -16,8 +16,8 @@ class MovieSearchNotifier extends ChangeNotifier {
   List<Movie> _searchResult = [];
   List<Movie> get searchResult => _searchResult;
 
-  List<String> _historySearchResult = [];
-  List<String> get historySearchResult => _historySearchResult;
+  Set<String> _historySearchResult = {};
+  Set<String> get historySearchResult => _historySearchResult;
 
   String _message = '';
   String get message => _message;
@@ -54,9 +54,13 @@ class MovieSearchNotifier extends ChangeNotifier {
     result.fold((failure) {
       _message = failure.message;
       _state = RequestState.Error;
+      notifyListeners();
     }, (data) {
-      _historySearchResult = data;
+      List<String> datas = _historySearchResult.toList();
+      datas = data;
+      print('${historySearchResult.length} oyoyo');
       _state = RequestState.Success;
+      notifyListeners();
     });
   }
 
@@ -68,9 +72,11 @@ class MovieSearchNotifier extends ChangeNotifier {
     result.fold((failure) {
       _message = failure.message;
       _state = RequestState.Error;
+      notifyListeners();
     }, (data) {
       _message = data;
       _state = RequestState.Success;
+      notifyListeners();
     });
   }
 
@@ -82,9 +88,11 @@ class MovieSearchNotifier extends ChangeNotifier {
     result.fold((failure) {
       _message = failure.message;
       _state = RequestState.Error;
+      notifyListeners();
     }, (data) {
       _message = data;
       _state = RequestState.Success;
+      notifyListeners();
     });
   }
 }

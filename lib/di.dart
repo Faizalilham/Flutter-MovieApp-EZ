@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:movie_app/common/network.dart';
 import 'package:movie_app/data/datasource/helper/movie_database_helper.dart';
+import 'package:movie_app/data/datasource/helper/shared_preference_helper.dart';
 import 'package:movie_app/data/datasource/helper/tv_database_helper.dart';
 import 'package:movie_app/data/datasource/local/movie/impl/local_data_source_movie_impl.dart';
 import 'package:movie_app/data/datasource/local/movie/local_data_source_movie.dart';
@@ -15,6 +16,7 @@ import 'package:movie_app/data/repository/tv_repository_impl.dart';
 import 'package:movie_app/domain/repository/movie_repository.dart';
 import 'package:movie_app/domain/repository/tv_repository.dart';
 import 'package:movie_app/domain/usecase/movie/detail_movie_usecase.dart';
+import 'package:movie_app/domain/usecase/movie/history_search_usecase.dart';
 import 'package:movie_app/domain/usecase/movie/now_playing_usecase.dart';
 import 'package:movie_app/domain/usecase/movie/popular_movie_usecase.dart';
 import 'package:movie_app/domain/usecase/movie/recommended_movie_usecase.dart';
@@ -60,6 +62,8 @@ void init() {
         topRatedMovieUsecase: locator(),
       ));
 
+     
+
   ///provider tv
   locator.registerFactory(() => TvListNotifier(
         onAirTvUsecase: locator(),
@@ -76,6 +80,7 @@ void init() {
         recommendedTvUsecase: locator(),
       ));
 
+
   locator.registerFactory(() => MovieDetailNotifier(
         detailMovieUsecase: locator(),
         recommendedMovieUsecase: locator(),
@@ -87,6 +92,7 @@ void init() {
   ///
   locator.registerFactory(() => MovieSearchNotifier(searchMovies: locator(),historySearchUsecase: locator()));
   locator.registerFactory(() => TvSearchNotifier( searchTvUsecase: locator()));
+  
 
   //
   locator.registerFactory(() => PopularMoviesNotifier(locator()));
@@ -112,7 +118,9 @@ void init() {
   locator.registerLazySingleton(() => RecommendedMovieUsecase(locator()));
 
   ///
+  locator.registerFactory(() => SharedPreferencesHelper());
   locator.registerLazySingleton(() => SearchMovieUsecase(locator()));
+  locator.registerLazySingleton(() => HistorySearchUsecase(locator()));
   locator.registerLazySingleton(() => SearchTvUsecase(locator()));
 
   ///use case tv
@@ -148,7 +156,7 @@ void init() {
         tvLocalDataSource: locator(),
         networkInfo: locator(),
       ));
-
+ 
   ///data source
   locator.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(client: locator()));

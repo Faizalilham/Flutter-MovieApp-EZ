@@ -15,7 +15,20 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   @override
+  void initState() {
+    super.initState();
+    Future.microtask(
+        () => Provider.of<MovieSearchNotifier>(context, listen: false)
+          ..showHistory()
+          ..fetchHistorySearch());
+    print(
+        "${Provider.of<MovieSearchNotifier>(context, listen: false).isHistory}");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final TextEditingController textFieldController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search Movie'),
@@ -26,10 +39,11 @@ class _SearchPageState extends State<SearchPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              onChanged: (query) {
-                Provider.of<MovieSearchNotifier>(context, listen: false)
-                    .fetchMovieSearch(query);
+              controller: textFieldController,
+              onFieldSubmitted: (value) {
+                searchs(context, value);
               },
+              onChanged: (query) {}, // untuk live search wa
               onTap: () async {
                 Provider.of<MovieSearchNotifier>(context, listen: false)
                     .showHistory();
@@ -46,6 +60,13 @@ class _SearchPageState extends State<SearchPage> {
                   Icons.search,
                   color: kRichBlack,
                 ),
+                suffixIcon: InkWell(
+                    onTap: () {
+                      textFieldController.clear();
+                      Provider.of<MovieSearchNotifier>(context, listen: false)
+                          .showHistory();
+                    },
+                    child: const Icon(Icons.close_rounded, color: kRichBlack)),
                 contentPadding: const EdgeInsets.all(15.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
@@ -59,22 +80,55 @@ class _SearchPageState extends State<SearchPage> {
               final result = data.searchResult;
               final tapResult = data.isHistory;
 
-              Text(
-                tapResult ? 'Search Result' : 'History Result',
-                style: Heading6,
-              );
               if (data.state == RequestState.Loading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (data.state == RequestState.Success) {
+                print("${data.historySearchResult.length} oyoyoy");
                 return tapResult
                     ? Expanded(
                         child: ListView.builder(
-                          itemCount: result.length,
+                          itemCount: data.historySearchResult.length,
                           itemBuilder: (context, index) {
-                            final movie = data.searchResult[index];
-                            return CardList(movie);
+                            
+                            final search =
+                                data.historySearchResult.toList()[index];
+                            return Column(
+                              children: [
+                                Text(
+                                  tapResult ? 'History Result' : 'Search Result',
+                                  style: Heading6,
+                                ),
+                                const SizedBox(height: 20),
+                                data.historySearchResult.isNotEmpty
+                                ? ListTile(
+                                    leading: Image.asset("assets/img/clock.png",
+                                        height: 15, width: 15),
+                                    contentPadding: const EdgeInsets.all(4),
+                                    title: InkWell(
+                                      onTap: () {
+                                        textFieldController.text = search;
+                                        searchs(context, search);
+                                      },
+                                      child: Text(search, style: subtitle),
+                                    ),
+                                    trailing: InkWell(
+                                      onTap: () async {
+                                        var datas = data.historySearchResult;
+                                        datas.remove(search);
+                                        Provider.of<MovieSearchNotifier>(
+                                                context,
+                                                listen: false)
+                                            .saveHistorySearch(datas.toList());
+                                      },
+                                      child: const Icon(Icons.close,
+                                          color: Colors.white),
+                                    ),
+                                  )
+                                : Container()
+                              ],
+                            );
                           },
                         ),
                       )
@@ -96,4 +150,16 @@ class _SearchPageState extends State<SearchPage> {
       ),
     );
   }
+}
+
+void searchs(BuildContext context, String query) {
+  var listSearch = Provider.of<MovieSearchNotifier>(context, listen: false)
+      .historySearchResult;
+
+  listSearch.add(query);
+
+  Provider.of<MovieSearchNotifier>(context, listen: false)
+    ..showHistory()
+    ..fetchMovieSearch(query)
+    ..saveHistorySearch(listSearch.toList());
 }
