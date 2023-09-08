@@ -1,0 +1,23 @@
+import 'package:core/utils/failure.dart';
+import 'package:dartz/dartz.dart';
+
+import 'package:core/domain/entitites/movie/movie.dart';
+import 'package:core/domain/entitites/movie/movie_detail.dart';
+
+abstract class MovieRepository {
+  Future<Either<Failure, List<Movie>>> getNowPlaying();
+  Future<Either<Failure, MovieDetail>> getDetailMovie(int id);
+  Future<Either<Failure, List<Movie>>> getMovieRecommendations(int id);
+  Future<Either<Failure, List<Movie>>> getPopularMovies();
+  Future<Either<Failure, List<Movie>>> getTopRatedMovies();
+  Future<Either<Failure, List<Movie>>> searchMovies(String query);
+
+  Future<Either<Failure, String>> saveWatchlist(MovieDetail movie);
+  Future<Either<Failure, String>> removeWatchlist(MovieDetail movie);
+  Future<bool> isAddedToWatchlist(int id);
+  Future<Either<Failure, List<Movie>>> getWatchlistMovies();
+
+  Future<Either<Failure, String>> saveHistorySearch(List<String> data);
+  Future<Either<Failure, List<String>>> getHistorySearch();
+  Future<Either<Failure, String>> removeHistorySearch();
+}
