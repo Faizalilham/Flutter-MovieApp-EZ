@@ -3,6 +3,7 @@ import 'dart:core';
 import 'package:equatable/equatable.dart';
 import 'package:core/domain/entitites/tv/tv.dart';
 
+// ignore: must_be_immutable
 class TvModel extends Equatable {
   String? backdropPath;
   String firstAirDate;

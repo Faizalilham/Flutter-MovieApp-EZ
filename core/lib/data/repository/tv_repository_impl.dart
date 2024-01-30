@@ -2,7 +2,6 @@ import 'dart:io';
 
 
 import 'package:core/data/datasource/local/tv/local_data_source_tv.dart';
-import 'package:core/data/datasource/remote/impl/remote_data_source_impl.dart';
 import 'package:core/data/datasource/remote/remote_data_source.dart';
 import 'package:core/data/models/tv/tv_table.dart';
 import 'package:core/domain/entitites/tv/tv_detail.dart';

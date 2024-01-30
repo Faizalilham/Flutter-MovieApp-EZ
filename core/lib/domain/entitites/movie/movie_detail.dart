@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:core/domain/entitites/movie/genre.dart';
 
+// ignore: must_be_immutable
 class MovieDetail extends Equatable {
   MovieDetail({
     required this.adult,

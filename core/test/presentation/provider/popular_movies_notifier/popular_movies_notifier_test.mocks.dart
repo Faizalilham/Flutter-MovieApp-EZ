@@ -36,7 +36,7 @@ class MockGetPopularMovies extends _i1.Mock implements _i4.PopularMovieUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);

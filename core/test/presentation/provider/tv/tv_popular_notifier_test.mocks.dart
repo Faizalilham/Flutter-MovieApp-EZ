@@ -36,7 +36,7 @@ class MockGetTvPopular extends _i1.Mock implements _i4.PopularTvUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+ 
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);

@@ -3,6 +3,7 @@ import 'package:core/data/models/movie/genre_model.dart';
 import 'package:core/data/models/tv/season_model.dart';
 import 'package:core/domain/entitites/tv/tv_detail.dart';
 
+// ignore: must_be_immutable
 class TvDetailModel extends Equatable {
   TvDetailModel({
     required this.seasons,

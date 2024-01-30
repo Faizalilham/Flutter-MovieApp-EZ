@@ -59,7 +59,7 @@ class MovieSearchNotifier extends ChangeNotifier {
     }, (data) {
       List<String> datas = _historySearchResult.toList();
       datas = data;
-      print('${historySearchResult.length} oyoyo');
+      print('${historySearchResult.length} $datas oyoyo');
       _state = RequestState.Success;
       notifyListeners();
     });

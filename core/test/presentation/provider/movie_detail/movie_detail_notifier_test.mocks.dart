@@ -46,7 +46,7 @@ class MockGetMovieDetail extends _i1.Mock implements _i4.DetailMovieUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+  
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -67,7 +67,7 @@ class MockGetMovieRecommendations extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+ 
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -88,7 +88,7 @@ class MockGetWatchListStatus extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -106,7 +106,7 @@ class MockSaveWatchlist extends _i1.Mock implements _i11.SaveWatchlistUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+ 
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -126,7 +126,7 @@ class MockRemoveWatchlist extends _i1.Mock implements _i12.RemoveWatchlistUsecas
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);

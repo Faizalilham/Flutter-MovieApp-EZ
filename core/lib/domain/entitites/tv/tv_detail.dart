@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:core/domain/entitites/movie/genre.dart';
 import 'package:core/domain/entitites/tv/season.dart';
 
+// ignore: must_be_immutable
 class TvDetail extends Equatable {
   TvDetail({
     required this.seasons,

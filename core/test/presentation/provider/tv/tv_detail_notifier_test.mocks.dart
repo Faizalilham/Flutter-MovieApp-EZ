@@ -46,7 +46,7 @@ class MockGetTvDetail extends _i1.Mock implements _i4.DetailTvUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);
@@ -67,7 +67,7 @@ class MockGetRecommendationsTv extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+ 
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);
@@ -88,7 +88,7 @@ class MockGetWatchlistStatusTv extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+ 
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);
@@ -106,7 +106,7 @@ class MockSaveWatchlistTv extends _i1.Mock implements _i11.SaveWatchlistTvUsecas
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);
@@ -126,7 +126,7 @@ class MockRemoveWatchlistTv extends _i1.Mock implements _i12.RemoveWatchlistTvUs
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.TvRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeTvRepository_0()) as _i2.TvRepository);

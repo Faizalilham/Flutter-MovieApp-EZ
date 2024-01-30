@@ -379,7 +379,7 @@ class MockSharedPreferences extends _i1.Mock implements _i69.SharedPreferencesHe
   _i7.Future<String> saveHistorySearch(List<String> data) async {
     return (super.noSuchMethod(
         Invocation.method(#saveHistorySearch, [data]),
-        returnValue: Future<String>.value(),
+        returnValue: Future<String>.value(""),
         ));
   }
 

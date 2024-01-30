@@ -36,7 +36,6 @@ class MockTopRatedMoviesNotifier extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
   _i2.TopRatedMovieUsecase get getTopRatedMovies =>
       (super.noSuchMethod(Invocation.getter(#getTopRatedMovies),
           returnValue: _FakeGetTopRatedMovies_0()) as _i2.TopRatedMovieUsecase);

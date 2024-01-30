@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:core/domain/entitites/tv/season.dart';
 
+// ignore: must_be_immutable
 class SeasonModel extends Equatable {
   SeasonModel({
     required this.episodeCount,

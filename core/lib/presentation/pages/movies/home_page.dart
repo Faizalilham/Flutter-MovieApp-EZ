@@ -156,6 +156,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// ignore: must_be_immutable
 class HomeSection extends StatelessWidget {
   HomeSection({Key? key, required this.movieListNotifier}) : super(key: key);
 

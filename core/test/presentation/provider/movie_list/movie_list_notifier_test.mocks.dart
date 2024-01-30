@@ -41,7 +41,7 @@ class MockGetNowPlayingMovies extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+  
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -61,7 +61,7 @@ class MockGetPopularMovies extends _i1.Mock implements _i8.PopularMovieUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -81,7 +81,7 @@ class MockGetTopRatedMovies extends _i1.Mock implements _i9.TopRatedMovieUsecase
     _i1.throwOnMissingStub(this);
   }
 
-  @override
+
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);

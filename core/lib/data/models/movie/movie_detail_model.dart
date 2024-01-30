@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:core/data/models/movie/genre_model.dart';
 import 'package:core/domain/entitites/movie/movie_detail.dart';
 
+// ignore: must_be_immutable
 class MovieDetailModel extends Equatable {
   MovieDetailModel({
     required this.adult,

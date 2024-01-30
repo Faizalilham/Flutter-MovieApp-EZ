@@ -57,16 +57,13 @@ class MockMovieDetailNotifier extends _i1.Mock
     _i1.throwOnMissingStub(this);
   }
 
-  @override
   _i2.DetailMovieUsecase get getMovieDetail =>
       (super.noSuchMethod(Invocation.getter(#getMovieDetail),
           returnValue: _FakeGetMovieDetail_0()) as _i2.DetailMovieUsecase);
-  @override
   _i3.RecommendedMovieUsecase get getMovieRecommendations =>
       (super.noSuchMethod(Invocation.getter(#getMovieRecommendations),
               returnValue: _FakeGetMovieRecommendations_1())
           as _i3.RecommendedMovieUsecase);
-  @override
   _i4.WatchlistMovieStatusUsecase get getWatchListStatus =>
       (super.noSuchMethod(Invocation.getter(#getWatchListStatus),
           returnValue: _FakeGetWatchListStatus_2()) as _i4.WatchlistMovieStatusUsecase);

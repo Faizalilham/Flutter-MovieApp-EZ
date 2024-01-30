@@ -39,7 +39,6 @@ class MockSearchMovies extends _i1.Mock implements _i4.SearchMovieUsecase {
     _i1.throwOnMissingStub(this);
   }
 
-  @override
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
@@ -56,7 +55,6 @@ class MockHistorySearchMovies extends _i1.Mock implements _i5.HistorySearchUseca
     _i1.throwOnMissingStub(this);
   }
 
-  @override
   _i2.MovieRepository get repository =>
       (super.noSuchMethod(Invocation.getter(#repository),
           returnValue: _FakeMovieRepository_0()) as _i2.MovieRepository);
