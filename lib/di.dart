@@ -28,7 +28,7 @@ import 'package:core/domain/usecase/tv/onair_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/popular_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/recommended_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/remove_watchlist_tv_usecase.dart';
-import 'package:core/domain/usecase/tv/save_watchlist_tv)usecase.dart';
+import 'package:core/domain/usecase/tv/save_watchlist_tv_usecase.dart';
 import 'package:search/domain/usecase/search_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/top_rated_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/watchlist_status_tv_usecae.dart';
@@ -48,6 +48,7 @@ import 'package:search/presentation/provider/tv_search_notifier.dart';
 import 'package:core/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:core/utils/network.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 

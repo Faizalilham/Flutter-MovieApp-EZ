@@ -76,6 +76,7 @@ class MovieDetailNotifier extends ChangeNotifier {
 
   Future<void> addWatchlist(MovieDetail movie) async {
     final result = await saveWatchlist.execute(movie);
+    // ignore: await_only_futures
     await result.fold((failure) {
       _watchlistMessage = failure.message;
     }, (success) {
@@ -92,6 +93,7 @@ class MovieDetailNotifier extends ChangeNotifier {
 
   Future<void> removeFromWatchlist(MovieDetail movie) async {
     final result = await removeWatchlist.execute(movie);
+    // ignore: await_only_futures
     await result.fold((failure) {
       _watchlistMessage = failure.message;
     }, (success) {

@@ -10,9 +10,9 @@ Widget showShimmer() {
         itemCount: 8,
         itemBuilder: (context, index) {
           return Shimmer.fromColors(
-            child: Skeleton(height: 170,width: 120), 
             baseColor: Colors.grey[300]!,
-             highlightColor: Colors.grey[100]!);
+             highlightColor: Colors.grey[100]!,
+            child: const Skeleton(height: 170,width: 120));
         },
       ),
     

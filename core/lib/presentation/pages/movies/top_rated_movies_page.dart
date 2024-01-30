@@ -12,6 +12,7 @@ class TopRatedMoviesPage extends StatefulWidget {
   const TopRatedMoviesPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TopRatedMoviesPageState createState() => _TopRatedMoviesPageState();
 }
 
@@ -19,7 +20,6 @@ class _TopRatedMoviesPageState extends State<TopRatedMoviesPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     Future.microtask(() =>
         Provider.of<TopRatedMoviesNotifier>(context, listen: false)

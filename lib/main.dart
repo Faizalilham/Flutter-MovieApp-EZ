@@ -30,15 +30,18 @@ import 'package:core/presentation/provider/tv/tv_on_the_air_notifier.dart';
 import 'package:core/presentation/provider/tv/tv_popular_notifier.dart';
 import 'package:search/presentation/provider/tv_search_notifier.dart';
 import 'package:core/presentation/provider/tv/watchlist_tv_notifier.dart';
+// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 import 'di.dart' as di;
 
 void main() {
   di.init();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

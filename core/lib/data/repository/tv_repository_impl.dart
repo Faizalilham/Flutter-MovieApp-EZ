@@ -31,9 +31,9 @@ class TvRepositoryImpl implements TvRepository{
       final result = await remoteDataSource.getDetailTv(id);
       return Right(result.toEntity());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed connect to network'));
+      return const Left(ConnectionFailure('Failed connect to network'));
     }
   }
 
@@ -44,9 +44,9 @@ class TvRepositoryImpl implements TvRepository{
       final result = await remoteDataSource.getTvAiringToday();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return const Left(ConnectionFailure('Failed to connect the network'));
     }
   }
 
@@ -57,9 +57,9 @@ class TvRepositoryImpl implements TvRepository{
       final result = await remoteDataSource.getTvOnTheAir();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return const Left(ConnectionFailure('Failed to connect the network'));
     }
   }
 
@@ -70,9 +70,9 @@ class TvRepositoryImpl implements TvRepository{
       final result = await remoteDataSource.getTvPopular();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return const Left(ConnectionFailure('Failed to connect the network'));
     }
   }
 
@@ -82,9 +82,9 @@ class TvRepositoryImpl implements TvRepository{
       final result = await remoteDataSource.getTvTopRated();
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return const Left(ConnectionFailure('Failed to connect the network'));
     }
   }
 
@@ -123,33 +123,33 @@ class TvRepositoryImpl implements TvRepository{
     } on DatabaseException catch (e) {
       return Left(DatabaseFailure(e.message));
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 
   @override
   Future<Either<Failure, List<Tv>>> searchTv(String query) async {
-    // TODO: implement searchTv
+
     try {
       final result = await remoteDataSource.searchTv(query);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed to connect the network'));
+      return const Left(ConnectionFailure('Failed to connect the network'));
     }
   }
 
   @override
   Future<Either<Failure, List<Tv>>> getRecommendationsTv(int id) async {
-    // TODO: implement getRecommendationsTv
+    
     try {
       final result = await remoteDataSource.getTvRecommendations(id);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerFailure {
-      return Left(ServerFailure(''));
+      return const Left(ServerFailure(''));
     } on SocketException {
-      return Left(ConnectionFailure('Failed connect to network'));
+      return const Left(ConnectionFailure('Failed connect to network'));
     }
   }
   

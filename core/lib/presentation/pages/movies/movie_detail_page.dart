@@ -18,6 +18,7 @@ class MovieDetailPage extends StatefulWidget {
   const MovieDetailPage({Key? key, required this.id}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MovieDetailPageState createState() => _MovieDetailPageState();
 }
 
@@ -63,7 +64,7 @@ class ContentDetails extends StatelessWidget {
   final MovieDetail movie;
   final bool isAddedWatchlist;
   final List<Movie> recommendations;
-  ContentDetails(this.movie, this.isAddedWatchlist, this.recommendations);
+  const ContentDetails(this.movie, this.isAddedWatchlist, this.recommendations, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +127,7 @@ class ContentDetails extends StatelessWidget {
                                           .removeFromWatchlist(movie);
                                     }
                                     final message =
+                                        // ignore: use_build_context_synchronously
                                         Provider.of<MovieDetailNotifier>(
                                                 context,
                                                 listen: false)
@@ -136,6 +138,7 @@ class ContentDetails extends StatelessWidget {
                                         message ==
                                             MovieDetailNotifier
                                                 .watchlistRemoveSuccessMessage) {
+                                      // ignore: use_build_context_synchronously
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(
                                         content: Text(message),
@@ -143,6 +146,7 @@ class ContentDetails extends StatelessWidget {
                                             const Duration(milliseconds: 500),
                                       ));
                                     } else {
+                                      // ignore: use_build_context_synchronously
                                       showDialog(
                                           context: context,
                                           builder: (context) {

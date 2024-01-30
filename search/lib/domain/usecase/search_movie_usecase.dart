@@ -1,4 +1,5 @@
 import 'package:core/utils/failure.dart';
+// ignore: depend_on_referenced_packages
 import 'package:dartz/dartz.dart';
 
 import 'package:core/domain/entitites/movie/movie.dart';

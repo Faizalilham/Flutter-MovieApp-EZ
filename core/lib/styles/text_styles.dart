@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 ///style text
+// ignore: non_constant_identifier_names
 final TextStyle Heading5 =
     GoogleFonts.poppins(fontSize: 23, fontWeight: FontWeight.w400);
+// ignore: non_constant_identifier_names
 final TextStyle Heading6 = GoogleFonts.poppins(
     fontSize: 19, fontWeight: FontWeight.w500, letterSpacing: 0.15);
 final TextStyle subtitle = GoogleFonts.poppins(

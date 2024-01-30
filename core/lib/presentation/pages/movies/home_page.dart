@@ -38,6 +38,7 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -144,10 +145,10 @@ class _HomePageState extends State<HomePage> {
         ),
         InkWell(
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
+          child: const Padding(
+            padding: EdgeInsets.all(8),
             child: Row(
-              children: const [Text('See more'), Icon(Icons.arrow_forward_ios)],
+              children: [Text('See more'), Icon(Icons.arrow_forward_ios)],
             ),
           ),
         )
@@ -180,74 +181,72 @@ class HomeSection extends StatelessWidget {
         timePeriodText = "Night";
         break;
     }
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                onTap: () {
-                  ZoomDrawer.of(context)!.toggle();
-                },
-                child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: SvgPicture.asset(
-                      "assets/icon/Hamburger.svg",
-                      height: 20,
-                      width: 20,
-                    )),
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              onTap: () {
+                ZoomDrawer.of(context)!.toggle();
+              },
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: SvgPicture.asset(
+                    "assets/icon/Hamburger.svg",
+                    height: 20,
+                    width: 20,
+                  )),
+            ),
+            const SizedBox(width: 10),
+            InkWell(
+              onTap: () {
+                // Navigator.pushNamed(context, AboutPage.routeName);
+                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("This feature is still under development"),
+                  duration: Duration(milliseconds: 500),
+                ));
+              },
+              child: SvgPicture.asset(
+                "assets/icon/profile.svg",
+                height: 20,
+                width: 20,
               ),
-              const SizedBox(width: 10),
-              InkWell(
-                onTap: () {
-                  // Navigator.pushNamed(context, AboutPage.routeName);
-                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text("This feature is still under development"),
-                    duration: Duration(milliseconds: 500),
-                  ));
-                },
-                child: SvgPicture.asset(
-                  "assets/icon/profile.svg",
-                  height: 20,
-                  width: 20,
-                ),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Align(
-              alignment: Alignment.centerLeft,
-              child: Text("Good $timePeriodText", style: Heading5)),
-          const SizedBox(height: 30),
-          TextFormField(
-            onTap: () {
-              Navigator.pushNamed(context, SEARCH_ROUTE);
-              FocusManager.instance.primaryFocus?.unfocus();
-            },
-            autofocus: false,
-            textInputAction: TextInputAction.search,
-            style: const TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white,
-              hintText: 'What do you want to watch?',
-              hintStyle: const TextStyle(color: Colors.grey),
-              prefixIcon: const Icon(
-                Icons.search,
-                color: kRichBlack,
-              ),
-              contentPadding: const EdgeInsets.all(15.0),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
+            )
+          ],
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        Align(
+            alignment: Alignment.centerLeft,
+            child: Text("Good $timePeriodText", style: Heading5)),
+        const SizedBox(height: 30),
+        TextFormField(
+          onTap: () {
+            Navigator.pushNamed(context, SEARCH_ROUTE);
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          autofocus: false,
+          textInputAction: TextInputAction.search,
+          style: const TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            hintText: 'What do you want to watch?',
+            hintStyle: const TextStyle(color: Colors.grey),
+            prefixIcon: const Icon(
+              Icons.search,
+              color: kRichBlack,
+            ),
+            contentPadding: const EdgeInsets.all(15.0),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15.0),
             ),
           ),
-          const SizedBox(height: 30),
-        ],
-      ),
+        ),
+        const SizedBox(height: 30),
+      ],
     );
   }
 }
@@ -297,7 +296,7 @@ class MenuSection extends StatelessWidget {
 class MovieList extends StatelessWidget {
   final List<Movie> movies;
 
-  MovieList(this.movies);
+  const MovieList(this.movies, {super.key});
 
   @override
   Widget build(BuildContext context) {

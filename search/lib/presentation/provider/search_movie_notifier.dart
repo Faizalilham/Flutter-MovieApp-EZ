@@ -17,7 +17,7 @@ class MovieSearchNotifier extends ChangeNotifier {
   List<Movie> _searchResult = [];
   List<Movie> get searchResult => _searchResult;
 
-  Set<String> _historySearchResult = {};
+  final Set<String> _historySearchResult = {};
   Set<String> get historySearchResult => _historySearchResult;
 
   String _message = '';

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:core/utils/state.dart';
 import 'package:search/presentation/provider/tv_search_notifier.dart';
 import 'package:core/presentation/widgets/card_tv.dart';
+// ignore: depend_on_referenced_packages
 import 'package:provider/provider.dart';
 
 class SearchTvPage extends StatefulWidget {

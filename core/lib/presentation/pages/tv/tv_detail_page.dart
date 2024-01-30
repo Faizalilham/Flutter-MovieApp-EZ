@@ -17,6 +17,7 @@ class TvDetailPage extends StatefulWidget {
   const TvDetailPage({Key? key, required this.id}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TvDetailPageState createState() => _TvDetailPageState();
 }
 
@@ -63,7 +64,7 @@ class ContentDetails extends StatelessWidget {
   final TvDetail tvDetail;
   final bool isAddedWatchlistTv;
   final List<Tv> recommendation;
-  ContentDetails(this.tvDetail, this.isAddedWatchlistTv, this.recommendation);
+  const ContentDetails(this.tvDetail, this.isAddedWatchlistTv, this.recommendation, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -105,10 +106,13 @@ class ContentDetails extends StatelessWidget {
                                   }else{
                                     await Provider.of<TvDetailNotifier>(context, listen: false).removeFromWatchlistTv(tvDetail);
                                   }
+                                  // ignore: use_build_context_synchronously
                                   final message = Provider.of<TvDetailNotifier>(context, listen: false).watchlistMessageTv;
                                   if(message == TvDetailNotifier.watchlistAddSuccessMessage || message == TvDetailNotifier.watchlistRemoveSuccessMessage){
+                                    // ignore: use_build_context_synchronously
                                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message), duration: const Duration(milliseconds: 300),));
                                   }else{
+                                    // ignore: use_build_context_synchronously
                                     showDialog(
                                         context: context,
                                         builder: (context){

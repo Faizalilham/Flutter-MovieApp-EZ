@@ -8,7 +8,7 @@ import 'package:core/domain/entitites/tv/tv_detail.dart';
 import 'package:core/domain/usecase/tv/detail_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/recommended_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/remove_watchlist_tv_usecase.dart';
-import 'package:core/domain/usecase/tv/save_watchlist_tv)usecase.dart';
+import 'package:core/domain/usecase/tv/save_watchlist_tv_usecase.dart';
 import 'package:core/domain/usecase/tv/watchlist_status_tv_usecae.dart';
 
 class TvDetailNotifier extends ChangeNotifier{
@@ -80,6 +80,7 @@ class TvDetailNotifier extends ChangeNotifier{
 
   Future<void> addWatchlist(TvDetail tvDetail)async{
     final result = await saveWatchlistTvUsecase.execute(tvDetail);
+    // ignore: await_only_futures
     await result.fold((failure) {
       _watchlistMessageTv = failure.message;
     }, (success) {
@@ -96,6 +97,7 @@ class TvDetailNotifier extends ChangeNotifier{
 
   Future<void> removeFromWatchlistTv(TvDetail tvDetail)async{
     final result = await removeWatchlistTvUsecase.execute(tvDetail);
+    // ignore: await_only_futures
     await result.fold((failure) {
       _watchlistMessageTv = failure.message;
     }, (success) {

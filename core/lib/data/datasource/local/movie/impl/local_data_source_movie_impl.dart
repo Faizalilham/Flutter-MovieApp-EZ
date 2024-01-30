@@ -53,10 +53,10 @@ class LocalDataSourceMovieImpl implements LocalDataSourceMovie {
   @override
   Future<List<MovieTable>> getCacheNowPlaying() async {
     final result = await movieDbHelper.getCacheMovies('now playing');
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       return result.map((data) => MovieTable.fromMap(data)).toList();
     } else {
-      throw CacheException("Can't get the data :( ");
+      throw const CacheException("Can't get the data :( ");
     }
   }
 

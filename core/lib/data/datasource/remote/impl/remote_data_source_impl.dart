@@ -8,6 +8,7 @@ import 'package:core/data/models/tv/tv_model.dart';
 import 'package:core/data/models/tv/tv_response_model.dart';
 import 'package:core/utils/constant.dart';
 import 'package:core/utils/exception.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';

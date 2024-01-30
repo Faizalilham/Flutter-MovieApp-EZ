@@ -19,6 +19,7 @@ class TvPage extends StatefulWidget {
   const TvPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _TvPageState createState() => _TvPageState();
 }
 
@@ -138,10 +139,10 @@ class _TvPageState extends State<TvPage> {
         ),
         InkWell(
           onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
+          child: const Padding(
+            padding: EdgeInsets.all(8),
             child: Row(
-              children: const [Text('See more'), Icon(Icons.arrow_forward_ios)],
+              children: [Text('See more'), Icon(Icons.arrow_forward_ios)],
             ),
           ),
         )
@@ -153,7 +154,7 @@ class _TvPageState extends State<TvPage> {
 class TvList extends StatelessWidget {
   final List<Tv> tv;
 
-  TvList(this.tv);
+  const TvList(this.tv, {super.key});
 
   @override
   Widget build(BuildContext context) {
