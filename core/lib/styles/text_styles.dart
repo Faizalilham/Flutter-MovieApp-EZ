@@ -16,9 +16,13 @@ final TextStyle bodyText = GoogleFonts.poppins(
 
 ///text theme
 final textTheme = TextTheme(
+  // ignore: deprecated_member_use
   headline5: Heading5,
+  // ignore: deprecated_member_use
   headline6: Heading6,
+  // ignore: deprecated_member_use
   subtitle1: subtitle,
+  // ignore: deprecated_member_use
   bodyText2: bodyText,
 );
 
