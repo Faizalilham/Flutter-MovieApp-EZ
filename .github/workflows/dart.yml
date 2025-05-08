@@ -25,5 +25,10 @@ jobs:
     - run: flutter test
     - run: flutter build apk
     - run: flutter build appbundle
+    - name: Upload apk success build
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-release-apk
+        path: build/app/outputs/flutter-apk/app-release.apk
 
      
