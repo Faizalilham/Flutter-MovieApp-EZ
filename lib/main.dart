@@ -32,7 +32,18 @@ import 'package:movie_app/presentation/provider/tv/watchlist_tv_notifier.dart';
 import 'package:provider/provider.dart';
 import 'di.dart' as di;
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+// ...
+
+
+
+void main()async {
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   di.init();
   runApp(MyApp());
 }

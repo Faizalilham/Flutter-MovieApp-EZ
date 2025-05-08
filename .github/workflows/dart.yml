@@ -30,5 +30,12 @@ jobs:
       with:
         name: android-release-apk
         path: build/app/outputs/flutter-apk/app-release.apk
+    - name: upload artifact to Firebase App Distribution
+      uses: emertozd/Firebase-Distribution-Github-Action@v2
+      with:
+        appId: ${{secrets.FIREBASE_APP_ID_ANDROID_DEV}}
+        serviceCredentialsFileContent: ${{ secrets.FIREBASE_APP_ID }}
+        groups: android-test-internal
+        file: build/app/outputs/flutter-apk/app-release.apk  
 
      

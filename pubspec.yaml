@@ -52,6 +52,7 @@ dependencies:
   sqflite: ^2.0.0+3
   flutter_zoom_drawer: ^3.1.1
   shimmer: ^3.0.0
+  firebase_core: ^3.10.0
     
 
 dev_dependencies:
