@@ -29,10 +29,10 @@ final TextStyle bodyText = GoogleFonts.poppins(
 
 ///text theme
 final textTheme = TextTheme(
-  headline5: Heading5,
-  headline6: Heading6,
-  subtitle1: subtitle,
-  bodyText2: bodyText,
+  titleLarge: Heading5,
+  titleMedium: Heading6,
+  titleSmall: subtitle,
+  bodyMedium: bodyText,
 );
 
 const kColorScheme = ColorScheme(
